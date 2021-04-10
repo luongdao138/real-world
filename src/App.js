@@ -9,6 +9,8 @@ import { useEffect } from 'react';
 import { fetchUser } from './redux/actions/currentUser';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPasssord from './pages/ResetPassword';
+import Signup from './pages/Signup';
+import ActivateAccount from './pages/ActivateAccount';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,11 +36,14 @@ function App() {
             <Route path='/user/login'>
               <Login />
             </Route>
-            {/* <Route path='/user/signup'>
+            <Route path='/user/signup'>
               <Signup />
-            </Route> */}
+            </Route>
             <Route path='/user/forgotPassword'>
               <ForgotPassword />
+            </Route>
+            <Route path='/user/activate/:token'>
+              <ActivateAccount />
             </Route>
             <Route path='/user/resetPassword/:token' exact>
               <ResetPasssord />

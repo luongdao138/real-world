@@ -16,3 +16,11 @@ export const FORGOT_PW_FAILURE = 'FORGOT_PW_FAILURE';
 export const RESET_PW = 'RESET_PW';
 export const RESET_PW_SUCCESS = 'RESET_PW_SUCCESS';
 export const RESET_PW_FAILURE = 'RESET_PW_FAILURE';
+
+export const SIGNUP = 'SIGNUP';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
+
+export const ACTIVATE = 'ACTIVATE';
+export const ACTIVATE_SUCCESS = 'ACTIVATE_SUCCESS';
+export const ACTIVATE_FAILURE = 'ACTIVATE_FAILURE';

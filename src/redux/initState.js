@@ -7,6 +7,8 @@ export const initState = {
     forgotPasswordError: '',
     resetPasswordError: '',
     resetPasswordMessage: '',
+    signupError: '',
+    signupMessage: '',
   },
   post: {
     item: {},

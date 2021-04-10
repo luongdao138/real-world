@@ -59,3 +59,27 @@ export const resetPasswordSuccess = (message) => {
 export const resetPasswordFailure = (message) => {
   return { type: types.RESET_PW_FAILURE, payload: message };
 };
+
+export const signup = (user) => {
+  return { type: types.SIGNUP, payload: user };
+};
+
+export const signupSuccess = (message) => {
+  return { type: types.SIGNUP_SUCCESS, payload: message };
+};
+
+export const signupFailure = (message) => {
+  return { type: types.SIGNUP_FAILURE, payload: message };
+};
+
+export const activate = (token) => {
+  return { type: types.ACTIVATE, payload: token };
+};
+
+export const activateSuccess = (message) => {
+  return { type: types.ACTIVATE_SUCCESS, payload: message };
+};
+
+export const activateFailure = (message) => {
+  return { type: types.ACTIVATE_FAILURE, payload: message };
+};
