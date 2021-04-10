@@ -1,0 +1,18 @@
+export const LOGIN = 'LOGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+
+export const FETCH_USER = 'FETCH_USER';
+export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
+export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE';
+
+export const LOGOUT = 'LOGOUT';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+
+export const FORGOT_PW = 'FORGOT_PW';
+export const FORGOT_PW_SUCCESS = 'FORGOT_PW_SUCCESS';
+export const FORGOT_PW_FAILURE = 'FORGOT_PW_FAILURE';
+
+export const RESET_PW = 'RESET_PW';
+export const RESET_PW_SUCCESS = 'RESET_PW_SUCCESS';
+export const RESET_PW_FAILURE = 'RESET_PW_FAILURE';
