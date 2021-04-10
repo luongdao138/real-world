@@ -6,6 +6,8 @@ import {
   getUserLoginByToken,
   forgotPassword,
   resetPassword,
+  signup,
+  activate,
 } from '../../services/user';
 import { setLoading, setFinish } from '../actions/globalLoading';
 
@@ -61,7 +63,6 @@ function* forgotPw({ payload }) {
 }
 
 function* resetPw({ payload }) {
-  console.log(payload);
   const { token, newPassword } = payload;
   try {
     const res = yield call(resetPassword, token, newPassword);
@@ -73,6 +74,32 @@ function* resetPw({ payload }) {
   } catch (error) {
     console.log(error);
   }
+}
+
+function* signupUser({ payload }) {
+  try {
+    yield put(setLoading());
+    const res = yield call(signup, payload);
+    if (res.data.success) {
+      yield put(actions.signupSuccess(res.data.message));
+    } else yield put(actions.signupFailure(res.data.error));
+  } catch (error) {
+    console.log(error);
+  }
+  yield put(setFinish());
+}
+
+function* activateUser({ payload }) {
+  try {
+    yield put(setLoading());
+    const res = yield call(activate, payload);
+    if (res.data.success) {
+      alert('Register successfully! You can close this tab to login!');
+    } else alert('Register failed!');
+  } catch (error) {
+    console.log(error);
+  }
+  yield put(setFinish());
 }
 
 function* watchLogin() {
@@ -95,6 +122,14 @@ function* watchResetPassword() {
   yield takeEvery(types.RESET_PW, resetPw);
 }
 
+function* watchSignup() {
+  yield takeEvery(types.SIGNUP, signupUser);
+}
+
+function* watchActivate() {
+  yield takeEvery(types.ACTIVATE, activateUser);
+}
+
 export default function* currentUserSaga() {
   yield all([
     watchLogin(),
@@ -102,5 +137,7 @@ export default function* currentUserSaga() {
     watchLogout(),
     watchForgotPassword(),
     watchResetPassword(),
+    watchSignup(),
+    watchActivate(),
   ]);
 }

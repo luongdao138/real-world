@@ -66,3 +66,30 @@ export const resetPassword = (token, newPassword) => {
     throw error;
   }
 };
+
+export const signup = (user) => {
+  try {
+    const res = axios.post(
+      'https://real-world-app-v1.herokuapp.com/api/v1/users/register',
+      user,
+      { headers: { 'Content-Type': 'application/json' } }
+    );
+
+    return res;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const activate = (token) => {
+  try {
+    const res = axios({
+      url: 'https://real-world-app-v1.herokuapp.com/api/v1/users/activate',
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return res;
+  } catch (error) {
+    throw error;
+  }
+};

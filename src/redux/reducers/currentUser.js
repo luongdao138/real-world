@@ -40,6 +40,18 @@ const currentUserReducer = (state = initState.currentUser, action) => {
         resetPasswordError: action.payload,
         resetPasswordMessage: '',
       };
+    case types.SIGNUP_SUCCESS:
+      return {
+        ...state,
+        signupMessage: action.payload,
+        signupError: '',
+      };
+    case types.SIGNUP_FAILURE:
+      return {
+        ...state,
+        signupError: action.payload,
+        signupMessage: '',
+      };
     default:
       return state;
   }

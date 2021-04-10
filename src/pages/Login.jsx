@@ -82,6 +82,7 @@ const Login = () => {
         <common.Input
           fullWidth
           autoFocus
+          required
           errors={errors}
           label='Email'
           name='email'
@@ -93,6 +94,7 @@ const Login = () => {
           fullWidth
           name='password'
           label='Password'
+          required
           type='password'
           onChange={handleChange}
           value={values.password}
