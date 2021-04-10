@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = '/api/v1/users';
+const baseUrl = 'https://real-world-app-v1.herokuapp.com';
 
 export const login = async ({ email, password }) => {
   try {
