@@ -5,7 +5,7 @@ const baseUrl = 'https://real-world-app-v1.herokuapp.com/api/v1/users';
 export const login = async ({ email, password }) => {
   try {
     const res = await axios.post(
-      `${baseUrl}/login`,
+      `https://real-world-app-v1.herokuapp.com/api/v1/users/login`,
       { email, password },
       {
         headers: {
