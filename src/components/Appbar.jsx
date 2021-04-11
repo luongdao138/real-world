@@ -4,6 +4,7 @@ import {
   Toolbar,
   List,
   ListItem,
+  Typography,
   ListItemIcon,
   ListItemText,
   IconButton,
@@ -21,6 +22,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { logout } from '../redux/actions/currentUser';
+import userLogo from '../user.png';
 
 const useStyles = makeStyles((theme) => ({
   img: {
@@ -48,13 +50,19 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     [theme.breakpoints.up('sm')]: { display: 'none' },
   },
+  userLogo: {
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+  },
 }));
 
 const Appbar = ({ user, token }) => {
   const classes = useStyles();
-  const home = useSelector((state) => state.home);
+  const currentUser = useSelector((state) => state.currentUser.info);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  // const token = useSelector((state) => state.currentUser.token);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -65,10 +73,34 @@ const Appbar = ({ user, token }) => {
     <>
       <AppBar position='static'>
         <Toolbar>
-          <div>
+          <div style={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
             <img className={classes.img} src={logo} alt='' />
+
+            {token && (
+              <>
+                {currentUser.image ? (
+                  <img
+                    className={classes.userLogo}
+                    src={currentUser.image}
+                    alt=''
+                  />
+                ) : (
+                  <img className={classes.userLogo} src={userLogo} alt='' />
+                )}
+                <span style={{ marginLeft: '8px' }}>
+                  Welcome
+                  <Typography
+                    variant='h6'
+                    style={{ marginLeft: '8px' }}
+                    component='span'
+                  >
+                    {currentUser && currentUser.username}
+                  </Typography>
+                </span>{' '}
+              </>
+            )}
           </div>
-          <div className={classes.grow}></div>
+          {/* <div className={classes.grow}></div> */}
           <IconButton
             className={classes.menu}
             onClick={() => {

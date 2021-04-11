@@ -15,7 +15,7 @@ const currentUserReducer = (state = initState.currentUser, action) => {
         errorMessage: action.payload,
       };
     case types.LOGOUT_SUCCESS:
-      return initState.currentUser;
+      return { ...initState.currentUser, token: '' };
     case types.FORGOT_PW_SUCCESS:
       return {
         ...state,

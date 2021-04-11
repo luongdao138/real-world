@@ -17,7 +17,7 @@ export const initState = {
   postList: {
     items: [],
     postCount: 0,
-    currentPage: 0,
+    currentPage: 1,
     itemsPerPage: 10,
   },
   profile: {
@@ -28,7 +28,7 @@ export const initState = {
     short_bio: '',
   },
   home: {
-    currentTab: '',
+    currentTab: localStorage.getItem('token') ? 'personal' : 'global',
     tags: [],
   },
   globalLoading: {
