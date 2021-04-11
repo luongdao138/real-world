@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Nav from '../components/Nav';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../redux/actions/postList';
@@ -16,6 +16,7 @@ const Home = () => {
   const isLoading = useSelector((state) => state.globalLoading.isLoading);
   const count = Math.ceil(postCount / itemsPerPage);
   const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
 
   const handlePageChange = (e, page) => {
     if (page !== currentPage) {
@@ -23,21 +24,20 @@ const Home = () => {
         dispatch(actions.loadPersonalPost(page, itemsPerPage, token));
       else dispatch(actions.loadGlobalPost(page, itemsPerPage));
     }
+    setPage(page);
   };
 
   useEffect(() => {
     if (token) {
-      dispatch(actions.loadPersonalPost(currentPage, itemsPerPage, token));
+      dispatch(actions.loadPersonalPost(1, itemsPerPage, token));
     } else {
-      dispatch(actions.loadGlobalPost(currentPage, itemsPerPage));
+      dispatch(actions.loadGlobalPost(1, itemsPerPage));
     }
   }, [token]);
 
-  useEffect(() => {});
-
   return (
     <div>
-      <Nav />
+      <Nav setPage={setPage} />
       {isLoading && <Loader />}
       <Grid container spacing={2}>
         <Grid item xs={12} sm={9}>
@@ -49,6 +49,7 @@ const Home = () => {
               <common.Pagination
                 count={count}
                 color='primary'
+                currentPage={page}
                 onChange={handlePageChange}
               />
             )}

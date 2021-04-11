@@ -7,6 +7,7 @@ import {
   getGlobalPostCount,
   getPersonalPostCount,
   updateLike,
+  addPost,
 } from '../../services/postList';
 import { setFinish, setLoading } from '../actions/globalLoading';
 
@@ -50,6 +51,19 @@ function* updatePostLike({ payload }) {
   }
 }
 
+function* createPost({ payload }) {
+  const { post, token, history } = payload;
+  try {
+    yield put(setLoading());
+    const res = yield call(addPost, post, token);
+
+    history.push('/');
+  } catch (error) {
+    console.log(error);
+  }
+  yield put(setFinish());
+}
+
 function* watchLoadGlobalPost() {
   yield takeEvery(types.LOAD_GLOBAL_POST, loadGlobalPosts);
 }
@@ -62,6 +76,15 @@ function* watchUpdateLike() {
   yield debounce(1000, types.UPDATE_LIKE, updatePostLike);
 }
 
+function* watchCreatePost() {
+  yield takeEvery(types.ADD_POST, createPost);
+}
+
 export default function* postListSaga() {
-  yield all([watchLoadGlobalPost(), watchLoadPersonPost(), watchUpdateLike()]);
+  yield all([
+    watchLoadGlobalPost(),
+    watchLoadPersonPost(),
+    watchUpdateLike(),
+    watchCreatePost(),
+  ]);
 }

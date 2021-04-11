@@ -11,6 +11,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import ResetPasssord from './pages/ResetPassword';
 import Signup from './pages/Signup';
 import ActivateAccount from './pages/ActivateAccount';
+import AddPost from './pages/AddPost';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function App() {
             </Route>
             <Route path='/user/signup'>
               <Signup />
+            </Route>
+            <Route path='/post/new'>
+              <AddPost />
             </Route>
             <Route path='/user/forgotPassword'>
               <ForgotPassword />

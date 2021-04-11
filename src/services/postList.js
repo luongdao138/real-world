@@ -44,3 +44,11 @@ export const updateLike = (id, token) => {
     { headers: { Authorization: `Bearer ${token}` } }
   );
 };
+
+export const addPost = (post, token) => {
+  return axios.post(
+    'https://real-world-app-v1.herokuapp.com/api/v1/posts',
+    post,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+};

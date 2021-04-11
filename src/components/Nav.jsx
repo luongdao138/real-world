@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Nav = () => {
+const Nav = ({ setPage }) => {
   const classes = useStyles();
   const token = useSelector((state) => state.currentUser.token);
   const limit = useSelector((state) => state.postList.itemsPerPage);
@@ -30,6 +30,7 @@ const Nav = () => {
 
   const handleChangeTab = (value) => {
     if (value !== tab) {
+      setPage(1);
       if (value === 'global') {
         dispatch(loadGlobalPost(1, limit));
       } else {

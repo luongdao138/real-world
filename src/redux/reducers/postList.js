@@ -3,6 +3,11 @@ import * as types from '../types/postList';
 
 const postListReducer = (state = initState.postList, action) => {
   switch (action.type) {
+    case types.RESET:
+      return {
+        ...state,
+        currentPage: 1,
+      };
     case types.LOAD_GLOBAL_POST_SUCCESS:
       return {
         ...state,
@@ -28,6 +33,10 @@ const postListReducer = (state = initState.postList, action) => {
       return {
         ...state,
         items: newItems,
+      };
+    case types.ADD_POST_SUCCESS:
+      return {
+        ...state,
       };
 
     default:

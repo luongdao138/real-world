@@ -21,7 +21,7 @@ export const useForm = (initValues, validateOnchange = false, validate) => {
     setErrors({});
   };
 
-  return { values, errors, handleChange, resetForm, setErrors };
+  return { values, errors, handleChange, setValues, resetForm, setErrors };
 };
 
 const useStyles = makeStyles((theme) => ({

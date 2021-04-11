@@ -56,6 +56,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '50%',
   },
   logo_wrapper: {
+    display: 'flex',
+    alignItems: 'center',
     [theme.breakpoints.down('xs')]: { display: 'none' },
   },
 }));
@@ -79,7 +81,7 @@ const Appbar = ({ user, token }) => {
           <div style={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
             <img className={classes.img} src={logo} alt='' />
 
-            {token && (
+            {token && currentUser && (
               <div className={classes.logo_wrapper}>
                 {currentUser && currentUser.image ? (
                   <img
