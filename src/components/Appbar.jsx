@@ -55,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
     height: '40px',
     borderRadius: '50%',
   },
+  logo_wrapper: {
+    [theme.breakpoints.down('xs')]: { display: 'none' },
+  },
 }));
 
 const Appbar = ({ user, token }) => {
@@ -77,7 +80,7 @@ const Appbar = ({ user, token }) => {
             <img className={classes.img} src={logo} alt='' />
 
             {token && (
-              <>
+              <div className={classes.logo_wrapper}>
                 {currentUser && currentUser.image ? (
                   <img
                     className={classes.userLogo}
@@ -97,7 +100,7 @@ const Appbar = ({ user, token }) => {
                     {currentUser && currentUser.username}
                   </Typography>
                 </span>{' '}
-              </>
+              </div>
             )}
           </div>
           {/* <div className={classes.grow}></div> */}
