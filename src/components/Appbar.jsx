@@ -78,7 +78,7 @@ const Appbar = ({ user, token }) => {
 
             {token && (
               <>
-                {currentUser.image ? (
+                {currentUser && currentUser.image ? (
                   <img
                     className={classes.userLogo}
                     src={currentUser.image}
