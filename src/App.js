@@ -42,6 +42,9 @@ function App() {
             <Route path='/user/signup'>
               <Signup />
             </Route>
+            <Route path='/user/activate/:token'>
+              <ActivateAccount />
+            </Route>
             <Route path='/post/new'>
               <AddPost />
             </Route>
@@ -54,9 +57,7 @@ function App() {
             <Route path='/user/forgotPassword'>
               <ForgotPassword />
             </Route>
-            <Route path='/user/activate/:token'>
-              <ActivateAccount />
-            </Route>
+
             <Route path='/user/resetPassword/:token' exact>
               <ResetPasssord />
             </Route>
