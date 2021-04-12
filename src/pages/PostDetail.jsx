@@ -19,7 +19,7 @@ const PostDetail = () => {
     dispatch(loadPost(id));
   }, [id]);
 
-  if (!user) return <Redirect to='/' />;
+  // if (!user) return <Redirect to='/' />;
 
   if (isLoading) return <Loader />;
   return (
