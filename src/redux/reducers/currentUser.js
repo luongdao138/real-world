@@ -1,5 +1,6 @@
 import { initState } from '../initState';
 import * as types from '../types/currentUser';
+import { UNFOLLOW_SUCCESS, FOLLOW_SUCCESS } from '../types/user';
 
 const currentUserReducer = (state = initState.currentUser, action) => {
   switch (action.type) {
@@ -45,6 +46,22 @@ const currentUserReducer = (state = initState.currentUser, action) => {
         ...state,
         signupMessage: action.payload,
         signupError: '',
+      };
+    case FOLLOW_SUCCESS:
+      return {
+        ...state,
+        info: {
+          ...state.info,
+          follow: [...state.info.follow, action.payload],
+        },
+      };
+    case UNFOLLOW_SUCCESS:
+      return {
+        ...state,
+        info: {
+          ...state.info,
+          follow: state.info.follow.filter((x) => x !== action.payload),
+        },
       };
     case types.SIGNUP_FAILURE:
       return {

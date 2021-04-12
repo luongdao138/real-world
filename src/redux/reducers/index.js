@@ -6,6 +6,7 @@ import currentUserReducer from './currentUser';
 import globalLoadingReducers from './globalLoading';
 import postListReducer from './postList';
 import postReducer from './post';
+import userReducer from './user';
 
 const rootReducer = combineReducers({
   home: homeReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   currentUser: currentUserReducer,
   postList: postListReducer,
   post: postReducer,
+  user: userReducer,
 });
 
 export default rootReducer;

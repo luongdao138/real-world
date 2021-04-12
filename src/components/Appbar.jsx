@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import logo from '../logo.png';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logo_wrapper: {
     display: 'flex',
+    color: '#fff',
     alignItems: 'center',
     [theme.breakpoints.down('sm')]: { display: 'none' },
   },
@@ -68,11 +69,12 @@ const Appbar = ({ user, token }) => {
   const currentUser = useSelector((state) => state.currentUser.info);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
   // const token = useSelector((state) => state.currentUser.token);
 
   const handleLogout = (e) => {
     e.preventDefault();
-    dispatch(logout());
+    dispatch(logout(history));
   };
 
   return (
@@ -80,10 +82,15 @@ const Appbar = ({ user, token }) => {
       <AppBar position='static'>
         <Toolbar>
           <div style={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
-            <img className={classes.img} src={logo} alt='' />
+            <Link to='/'>
+              <img className={classes.img} src={logo} alt='' />
+            </Link>
 
             {token && currentUser && (
-              <div className={classes.logo_wrapper}>
+              <Link
+                className={classes.logo_wrapper}
+                to={`/user/${currentUser._id}`}
+              >
                 {currentUser && currentUser.image ? (
                   <img
                     className={classes.userLogo}
@@ -103,7 +110,7 @@ const Appbar = ({ user, token }) => {
                     {currentUser && currentUser.username}
                   </Typography>
                 </span>{' '}
-              </div>
+              </Link>
             )}
           </div>
           {/* <div className={classes.grow}></div> */}

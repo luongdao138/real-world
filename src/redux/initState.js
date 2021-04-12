@@ -25,12 +25,14 @@ export const initState = {
     currentPage: 1,
     itemsPerPage: 10,
   },
-  profile: {
-    id: '',
-    username: '',
-    image: '',
-    following: false,
-    short_bio: '',
+  user: {
+    info: {},
+    isOwn: false,
+    favoritePosts: [],
+    posts: [],
+    followers: [],
+    following: [],
+    isFollowed: false,
   },
   home: {
     currentTab: localStorage.getItem('token') ? 'personal' : 'global',

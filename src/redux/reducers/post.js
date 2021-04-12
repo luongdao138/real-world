@@ -58,6 +58,8 @@ const postReducer = (state = initState.post, action) => {
           ),
         },
       };
+    case 'LOGOUT_SUCCESS':
+      return initState.post;
     default:
       return state;
   }

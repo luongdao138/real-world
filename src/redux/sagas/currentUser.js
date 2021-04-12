@@ -39,9 +39,10 @@ function* fetchUser({ payload }) {
   }
 }
 
-function* logout() {
+function* logout({ payload }) {
   localStorage.removeItem('token');
   yield put(actions.logoutSuccess());
+  payload.push('/');
 }
 
 function* forgotPw({ payload }) {

@@ -81,7 +81,7 @@ const Post = ({ post }) => {
       <div className={classes.header}>
         <img src={image ? image : userLogo} alt='' />
         <div className='info'>
-          <Link to='/'>
+          <Link to={`/user/${post.creator._id}`}>
             <Typography
               variant='subtitle1'
               color='primary'
@@ -108,7 +108,7 @@ const Post = ({ post }) => {
         </Button>
       </div>
       <div className={classes.body} style={{ marginBottom: '12px' }}>
-        <Link to='/'>
+        <Link to={`/post/${_id}`}>
           <Typography variant='h5' className='title'>
             {title}
           </Typography>

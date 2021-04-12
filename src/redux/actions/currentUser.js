@@ -28,11 +28,11 @@ export const loginFailure = (message) => {
   };
 };
 
-export const logout = () => {
-  return { type: types.LOGOUT };
+export const logout = (history) => {
+  return { type: types.LOGOUT, payload: history };
 };
 
-export const logoutSuccess = () => {
+export const logoutSuccess = (history) => {
   return { type: types.LOGOUT_SUCCESS };
 };
 

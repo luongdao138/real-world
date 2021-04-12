@@ -68,7 +68,7 @@ function* watchLoadGlobalPost() {
   yield takeEvery(types.LOAD_GLOBAL_POST, loadGlobalPosts);
 }
 
-function* watchLoadPersonPost() {
+function* watchLoadPersonalPost() {
   yield takeEvery(types.LOAD_PERSONAL_POST, loadPersonalPosts);
 }
 
@@ -83,7 +83,7 @@ function* watchCreatePost() {
 export default function* postListSaga() {
   yield all([
     watchLoadGlobalPost(),
-    watchLoadPersonPost(),
+    watchLoadPersonalPost(),
     watchUpdateLike(),
     watchCreatePost(),
   ]);
