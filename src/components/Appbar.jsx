@@ -54,11 +54,12 @@ const useStyles = makeStyles((theme) => ({
     width: '40px',
     height: '40px',
     borderRadius: '50%',
+    objectFit: 'cover',
   },
   logo_wrapper: {
     display: 'flex',
     alignItems: 'center',
-    [theme.breakpoints.down('xs')]: { display: 'none' },
+    [theme.breakpoints.down('sm')]: { display: 'none' },
   },
 }));
 

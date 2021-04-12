@@ -12,7 +12,12 @@ export const initState = {
   },
   post: {
     item: {},
-    comments: [],
+    isOwn: false,
+    comments: {
+      items: [],
+      current: 0,
+      total: 0,
+    },
   },
   postList: {
     items: [],

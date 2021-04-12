@@ -12,6 +12,7 @@ import ResetPasssord from './pages/ResetPassword';
 import Signup from './pages/Signup';
 import ActivateAccount from './pages/ActivateAccount';
 import AddPost from './pages/AddPost';
+import PostDetail from './pages/PostDetail';
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,9 @@ function App() {
             </Route>
             <Route path='/post/new'>
               <AddPost />
+            </Route>
+            <Route path='/post/:id'>
+              <PostDetail />
             </Route>
             <Route path='/user/forgotPassword'>
               <ForgotPassword />

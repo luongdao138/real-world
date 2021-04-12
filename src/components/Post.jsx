@@ -132,6 +132,8 @@ const Post = ({ post }) => {
           variant='outlined'
           color='secondary'
           size='small'
+          component={Link}
+          to={`/post/${_id}`}
         >
           Read more
         </Button>
