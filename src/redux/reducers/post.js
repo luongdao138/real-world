@@ -43,7 +43,7 @@ const postReducer = (state = initState.post, action) => {
           ...state.comments,
           current: state.comments.current + 1,
           total: state.comments.total + 1,
-          items: [action.payload, ...state.comments.items],
+          items: [...state.comments.items, action.payload],
         },
       };
     case types.DELETE_COMMENT_SUCCESS:
