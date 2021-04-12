@@ -93,26 +93,31 @@ const PostComment = ({ total, current, comments }) => {
   return (
     <div style={{ padding: '12px' }}>
       <div className={classes.wrapper}>
-        <textarea
-          className={classes.textarea}
-          style={{ resize: 'none' }}
-          placeholder='Write your comment...'
-          ref={container}
-        ></textarea>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            marginBottom: '10px',
-          }}
-        >
-          <Button
-            color='secondary'
-            text='Post comment'
-            style={{ textTransform: 'none' }}
-            onClick={handlePostComment}
-          />
-        </div>
+        {user && (
+          <>
+            {' '}
+            <textarea
+              className={classes.textarea}
+              style={{ resize: 'none' }}
+              placeholder='Write your comment...'
+              ref={container}
+            ></textarea>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                marginBottom: '10px',
+              }}
+            >
+              <Button
+                color='secondary'
+                text='Post comment'
+                style={{ textTransform: 'none' }}
+                onClick={handlePostComment}
+              />
+            </div>
+          </>
+        )}
 
         <div className={classes.comments}>
           {comments.map((comment) => {
@@ -131,7 +136,7 @@ const PostComment = ({ total, current, comments }) => {
                     <span className='username'>{comment.creator.username}</span>
                   </div>
                   <span className='date'>{comment.createdAt}</span>
-                  {comment.creator._id === user._id && (
+                  {user && comment.creator._id === user._id && (
                     <IconButton
                       style={{
                         position: 'absolute',
