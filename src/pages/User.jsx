@@ -20,6 +20,13 @@ import Post from '../components/Post';
 import * as actions from '../redux/actions/user';
 
 const useStyles = makeStyles((theme) => ({
+  btn_wrapper: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginTop: '12px',
+    [theme.breakpoints.down('xs')]: { justifyContent: 'center' },
+  },
+
   header: {
     padding: '24px',
     '& .info': {
@@ -142,14 +149,14 @@ const User = () => {
             {info.username}{' '}
           </Typography>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <div className={classes.btn_wrapper}>
           {isOwn ? (
             <Button
               variant='outlined'
               color='secondary'
               style={{ textTransform: 'none' }}
             >
-              Edit Srofile Settings
+              Edit Profile Settings
             </Button>
           ) : isFollowed ? (
             <Button
